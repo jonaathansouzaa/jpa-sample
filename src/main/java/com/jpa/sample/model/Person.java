@@ -1,9 +1,10 @@
 package com.jpa.sample.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table
+@Table(name = "person")
 public class Person {
 
     @Id

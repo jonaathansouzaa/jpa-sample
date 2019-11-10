@@ -35,17 +35,24 @@ public class PersonDAO implements DAO<Person> {
 
     @Override
     public void update(Person entity) {
-
+        begin();
+        entityManager.persist(entity);
+        close();
     }
 
     @Override
     public void delete(Person entity) {
-
+        begin();
+        entityManager.remove(entity);
+        close();
     }
 
     @Override
-    public Person findById() {
-        return null;
+    public Person findById(Long entityId) {
+        begin();
+        Person person = entityManager.find(Person.class, entityId);
+        close();
+        return person;
     }
 
     @Override
